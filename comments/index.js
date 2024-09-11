@@ -37,8 +37,31 @@ app.post('/posts/:id/comments', async (req, res) => {
     res.status(201).send(comments)
 })
 
-app.post('/events', (req, res) => {
+app.post('/events', async (req, res) => {
     console.log('Received event: ', req.body.type)
+
+    const { type, data } = req.body
+
+    if (type === 'CommentModerated') {
+        const { id, postId, content, status } = data
+        const comments = commentsByPostID[postId]
+
+        const comment = comments.find(comment => {
+            return comment.id === id // We try to find the comment in our local storage equal to the one we received in req body data
+        })
+
+        comment.status = status // Update our locally stored comment's status
+
+        await axios.post('http://localhost:4005/events', {
+            type: 'CommentUpdated',
+            data: {
+                id,
+                postId,
+                content,
+                status,
+            }
+        })
+    }
 
     res.send({})
 })
