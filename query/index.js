@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const app = express()
+
 app.use(bodyParser.json())
 app.use(cors())
 
@@ -22,12 +23,12 @@ app.post('/events', (req, res) => {
     }
 
     if (type === 'CommentCreated') {
-        const { id, content, postId } = data
+        const { id, content, postId, status } = data
 
         const post = posts[postId] // Select relevant post using postId
 
         if (post) {
-            post.comments.push({ id, content }) // Add comment's ID and content to the post's comments array
+            post.comments.push({ id, content, status }) // Add comment's ID and content to the post's comments array
         }
 
     }

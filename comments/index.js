@@ -20,7 +20,7 @@ app.post('/posts/:id/comments', async (req, res) => {
 
     const comments = commentsByPostID[req.params.id] || [] // This will lookup post ID, and give an array or undefined (checks if post ID is in commentsByPostID object)
 
-    comments.push({ id: commentId, content }) // Push a comment object into the comments array
+    comments.push({ id: commentId, content, status: 'pending' }) // Push a comment object into the comments array
 
     commentsByPostID[req.params.id] = comments // Create new value for that post ID in the commentsByPostID object
 
@@ -29,7 +29,8 @@ app.post('/posts/:id/comments', async (req, res) => {
         data: {
             id: commentId,
             content,
-            postId: req.params.id
+            postId: req.params.id,
+            status: 'pending'
         }
     })
 
