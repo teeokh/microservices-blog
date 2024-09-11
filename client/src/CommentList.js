@@ -5,15 +5,16 @@ const CommentList = ({ postID }) => {
 
     const [comments, setComments] = useState([]) // API sends us an array of comments
 
-    const fetchData = async () => {
-        const res = await axios.get(`http://localhost:4001/posts/${postID}/comments`)
-
-        setComments(res.data)
-    }
-
     useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get(`http://localhost:4001/posts/${postID}/comments`)
+
+            setComments(res.data)
+        }
+
         fetchData()
-    }, [])
+
+    }, [postID])
 
     const renderedComments = comments.map(comment => {
         return <li className="" key={comment.id}>
