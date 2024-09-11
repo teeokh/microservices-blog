@@ -11,6 +11,8 @@ app.post('/events', (req, res) => { // Server listens for post reques to /events
     axios.post('http://localhost:4000/events', event)
     axios.post('http://localhost:4001/events', event)
     axios.post('http://localhost:4002/events', event)
+    axios.post('http://localhost:4003/events', event)
+
     // We send this event to every service
 
     res.send({ status: 'OK' })
