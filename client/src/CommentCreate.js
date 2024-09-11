@@ -13,6 +13,8 @@ const CommentCreate = ({ postID }) => {
         })
 
         setContent('')
+
+        console.log()
     }
 
     return (
@@ -26,6 +28,7 @@ const CommentCreate = ({ postID }) => {
             </form>
         </div>
     )
+
 }
 
 export default CommentCreate
