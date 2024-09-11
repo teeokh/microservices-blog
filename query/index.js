@@ -9,7 +9,7 @@ app.use(cors())
 const posts = {}
 
 app.get('/posts', (req, res) => {
-    req.send(posts)
+    res.send(posts)
 })
 
 app.post('/events', (req, res) => {

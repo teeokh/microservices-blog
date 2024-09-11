@@ -10,9 +10,9 @@ app.use(cors())
 
 const commentsByPostID = {}
 
-app.get('/posts/:id/comments', (req, res) => {
-    res.send(commentsByPostID[req.params.id] || [])
-})
+// app.get('/posts/:id/comments', (req, res) => {
+//     res.send(commentsByPostID[req.params.id] || [])
+// })
 
 app.post('/posts/:id/comments', async (req, res) => {
     const commentId = randomBytes(4).toString('hex')

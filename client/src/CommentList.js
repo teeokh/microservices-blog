@@ -1,20 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 
-const CommentList = ({ postID }) => {
-
-    const [comments, setComments] = useState([]) // API sends us an array of comments
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await axios.get(`http://localhost:4001/posts/${postID}/comments`)
-
-            setComments(res.data)
-        }
-
-        fetchData()
-
-    }, [postID])
+const CommentList = ({ comments }) => {
 
     const renderedComments = comments.map(comment => {
         return <li className="" key={comment.id}>
