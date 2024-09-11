@@ -9,7 +9,7 @@ app.post('/events', async (req, res) => { // This is where we recieve an event f
     const { type, data } = req.body // Post request informtion is always sent in the request body
 
     if (type === 'CommentCreated') {
-        const status = data.content.includes('shit') ? 'rejected' : 'approved' // If content includes shit, we set to rejected
+        const status = data.content.includes('damn') ? 'rejected' : 'approved' // If content includes damn, we set to rejected
 
         await axios.post('http://localhost:4005/events', {
             type: 'CommentModerated',
