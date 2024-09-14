@@ -24,7 +24,7 @@ app.post('/posts/:id/comments', async (req, res) => {
 
     commentsByPostID[req.params.id] = comments // Create new value for that post ID in the commentsByPostID object
 
-    await axios.post('http://localhost:4005/events', {
+    await axios.post('http://event-bus-srv:4005/events', {
         type: 'CommentCreated',
         data: {
             id: commentId,
@@ -52,7 +52,7 @@ app.post('/events', async (req, res) => {
 
         comment.status = status // Update our locally stored comment's status
 
-        await axios.post('http://localhost:4005/events', {
+        await axios.post('http://event-bus-srv:4005/events', {
             type: 'CommentUpdated',
             data: {
                 id,
