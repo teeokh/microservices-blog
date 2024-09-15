@@ -16,7 +16,7 @@ app.post('/events', async (req, res) => { // Server listens for post reques to /
         'http://posts-clusterip-srv:4000/events',
         'http://comments-clusterip-srv:4001/events',
         'http://query-clusterip-srv:4002/events',
-        'http://modeartion-clusterip-srv:4003/events'
+        'http://moderation-clusterip-srv:4003/events'
     ]
 
     for (let service of services) {

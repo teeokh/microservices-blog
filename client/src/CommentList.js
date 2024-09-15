@@ -15,6 +15,9 @@ const CommentList = ({ comments }) => {
             case 'rejected':
                 content = 'This comment has been rejected'
                 break
+            default:
+                content = 'Unknown comment status'
+                break
         }
 
         return <li key={comment.id}>
